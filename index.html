@@ -385,22 +385,28 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
+  <strong>Terima Kasih!</strong> Pesan Anda Kami Terima/Terima Kasih Atas Sarannya.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+            <form name='my-website-contact-form'>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <label for="name">Nama</label>
+                  <input type="text" name="nama" class="form-control" id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                   <div class="validate"></div>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
+                  <label for="name">Email</label>
                   <input type="email" class="form-control" name="email" id="email" data-rule="email" data-msg="Please enter a valid email" />
                   <div class="validate"></div>
                 </div>
               </div>
               <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <label for="name">pesan</label>
+                <input type="text" class="form-control" name="pesan" id="subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                 <div class="validate"></div>
               </div>
               <div class="form-group">
@@ -411,9 +417,12 @@
               <div class="mb-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+                <button type="submit" class="btn btn-primary">Kirim</button>
+
+              <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
             </form>
           </div>
 
@@ -458,6 +467,31 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <form name="submit-to-google-sheet">
+    <input name="email" type="email" placeholder="Email" required>
+    <button type="submit">Send</button>
+  </form>
+  
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwZ4qlX1X58w1TbAeZQy2em9xH7mRUaKDbeRnQcpD5i61bswTLYRaOMT_wtO2OUGPAJWA/exec'
+    const form = document.forms['my-website-contact-form']
+    const btn-Kirim = dokumen.querySelector(".btn-loading");
+    const myalert = dokumen.querySelector(".my-alert");
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      //ketika tombol submit diklik
+      //tampilkan tombol loading, hilangkan tombol kirim
+      btnLoading.classList.toggle(d-none);
+      btnKirim.classList.toggle(d-none);
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        //tampilkan tombol kirim, hilangkan tombol loading
+        btnLoading.classList.togle(d-none);
+      btnKirim.classList.togle(d-none);
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 </body>
 
 </html>
