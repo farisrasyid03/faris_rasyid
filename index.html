@@ -122,7 +122,7 @@
 
         <div class="section-title">
           <h2>Skills</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          
         </div>
 
         <div class="row skills-content">
@@ -417,11 +417,10 @@
               <div class="mb-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
-                <button type="submit" class="btn btn-primary">Kirim</button>
+                <button type="submit" class="btn btn-primary">kirim</button>
 
               <button class="btn btn-primary btn-loading d-none" type="button" disabled>
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                Loading...
               </button>
             </form>
           </div>
@@ -475,20 +474,19 @@
   <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwZ4qlX1X58w1TbAeZQy2em9xH7mRUaKDbeRnQcpD5i61bswTLYRaOMT_wtO2OUGPAJWA/exec'
     const form = document.forms['my-website-contact-form']
-    const btn-Kirim = dokumen.querySelector(".btn-loading");
+    
     const myalert = dokumen.querySelector(".my-alert");
 
     form.addEventListener('submit', e => {
       e.preventDefault()
-      //ketika tombol submit diklik
-      //tampilkan tombol loading, hilangkan tombol kirim
+      
       btnLoading.classList.toggle(d-none);
       btnKirim.classList.toggle(d-none);
       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => console.log('Success!', response))
         //tampilkan tombol kirim, hilangkan tombol loading
         btnLoading.classList.togle(d-none);
-      btnKirim.classList.togle(d-none);
+        btnkirim.classList.togle(d-none);
         .catch(error => console.error('Error!', error.message))
     })
   </script>
